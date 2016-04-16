@@ -1,18 +1,40 @@
-RAIN version 2.1.10.0 Release Notes
---------------------------------
+RAIN version 2.1.11.0 Release Notes
+-----------------------------------
 
-What's New:
------------
-We've added support for our new line of Sentio(tm) Characters.  Sentio Characters are pre-rigged, completely ready to go characters that you can drag and drop into your game for instant functionality.
+New on the Asset Store:
+-----------------------
+The Sentio Character Bundle featuring Necromancer, Darkness Warlord, and Minotaur
+is now available from the Unity Asset Store: http://u3d.as/cks
 
-Sentio Minotaur is now available on the Asset Store: http://u3d.as/bFb
-Sentio Darkness Warlord is now available on the Asset Store: http://u3d.as/biH
 
-Sentio Necromancer is coming soon!
+New to RAIN:
+------------
+We've made major changes to the RAIN Navigation System!  Here are some of the new features:
+1) You may now parent RAIN AI components to game objects.
+--- Parenting a NavMesh will cause the NavMesh to obey the transform of the parent object, even if the transform changes at runtime.  You may move an object that has a child NavMesh, and the NavMesh will move along with it.  You can also create Prefabs that include NavMeshes, then place and position those prefabs at runtime.
+--- Parented Waypoints and Navigation Targets will also obey the transform of their parent.
+--- Parented AI will move along surfaces using the Y up of the parent object and will also obey runtime changes to the object transform (sticking to rotating surfaces, etc.)
 
-Changes and bug fixes:
-----------------------
-Updated Sentio Character unpack tool to properly overwrite existing assets when unpacking.
-Improved performance of navigation and path following code
-Updated Behavior Tree custom actions to properly use namespaces.  
-The Assembly field in the BT inspector for custom actions and decisions is now Namespace.
+2) AI can move correctly on objects that are rotated with respect to the world axis.  You may create AI that walk along walls, on the ceiling, etc.  You may need to disable gravity on your AI in some cases and use a custom gravity script.
+
+3) Several pathing methods have been obsoleted and/or updated.  If you need help updating custom code, post your requests on the Rival Theory forums: http://rivaltheory.com/forums/
+
+4) Check the Rival Theory website for example projects demonstrating use of the Navigation Changes: http://rivaltheory.com/community/tutorials/
+
+
+Other changes and bug fixes:
+----------------------------
+Fix for the Mecanim Animator Editor breaking when the Unity 4 version of RAIN is used in Unity 5.
+Fix for several editors when selecting and using handles.
+Fix to Mecanim Motor parameter for TurnBeforeMoveAngle.
+Fix for MecanimAnimator not properly starting/stopping animation states (was always returning running/failure).
+Fix for Visual Sensors not properly checking vertical visibility.
+
+Added OctTree visualization the the NavMeshRig
+Improved height error on the Navigation Mesh
+Changed the RAIN/Unity version warning to be more obvious.
+Changed the editor tool handle behave more consistently between the editors.
+Changed Mecanim Animator to find Animator component in children.
+Changed Mecanim Motor to add AngleToTarget to represent then current angle between the target and the AI, and changed TurnAngle to represent the angle only when the AI is actually rotating.
+Changed BTActions to be direct BTNodes.
+
